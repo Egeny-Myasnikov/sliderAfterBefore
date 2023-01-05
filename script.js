@@ -2,9 +2,24 @@ const slider = document.querySelector(".slider");
 const before = slider.querySelector(".before");
 const beforeImg = before.querySelector("img");
 const change = slider.querySelector(".change");
+const changeCircle = change.querySelector(".circle");
 const body = document.body;
 
 let isActive = false;
+
+const active = () => {
+  isActive = true;
+  change.style.backgroundImage = "linear-gradient(rgb(0 237 152), #00bcd4)";
+  changeCircle.style.backgroundImage =
+    "linear-gradient(rgb(0 237 152), #00bcd4)";
+  changeCircle.style.cursor = "grabbing";
+};
+const noActive = () => {
+  isActive = false;
+  change.style.backgroundImage = "linear-gradient(rgb(0 43 77), #00bcd4)";
+  changeCircle.style.backgroundImage = "linear-gradient(rgb(0 43 77), #00bcd4)";
+  changeCircle.style.cursor = "grab";
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   let width = slider.offsetWidth;
@@ -24,14 +39,12 @@ const pauseEvents = (e) => {
 };
 
 slider.addEventListener("mousedown", (e) => {
-  isActive = true;
-  change.style.backgroundColor = "yellow";
+  active();
   pauseEvents(e);
 });
 
 slider.addEventListener("mouseup", () => {
-  isActive = false;
-  change.style.backgroundColor = "crimson";
+  noActive();
 });
 slider.addEventListener("mouseleave", () => {
   isActive = false;
@@ -48,16 +61,13 @@ slider.addEventListener("mousemove", (e) => {
 });
 
 slider.addEventListener("touchstart", (e) => {
-  isActive = true;
-  change.style.backgroundColor = "yellow";
+  active();
 });
-slider.addEventListener("touchhend", (e) => {
-  isActive = false;
-  change.style.backgroundColor = "crimson";
+slider.addEventListener("touchend", (e) => {
+  noActive();
 });
 slider.addEventListener("touchcencel", (e) => {
   isActive = false;
-  change.style.backgroundColor = "crimson";
 });
 slider.addEventListener("touchmove", (e) => {
   if (!isActive) {

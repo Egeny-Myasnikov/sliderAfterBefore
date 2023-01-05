@@ -18,6 +18,8 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 40, 34, 0.4);
 }
 .slider img {
   width: 100%;
@@ -43,28 +45,26 @@
   top: 0;
   width: 3px;
   height: 100%;
-  background-color: crimson;
-  cursor: pointer;
-  transition: background-color 0.2s linear;
+  background-image: linear-gradient(rgb(0, 43, 77), #00bcd4);
+  box-shadow: -3px 0px 10px rgb(0, 63, 76);
+  cursor: grab;
 }
-.change::after {
-  content: "";
+
+.circle {
+  display: block;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: crimson;
+  background-image: linear-gradient(rgb(0, 43, 77), #00bcd4);
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  transition: background-color 0.2s linear;
+  box-shadow: 2px 2px 10px rgb(4, 88, 105);
 }
 @media screen and (max-width: 500px) {
-  .change::after {
+  .circle {
     width: 20px;
     height: 20px;
   }
-}
-.change:hover::after {
-  background-color: yellow;
 }
