@@ -47,19 +47,20 @@ slider.addEventListener("mousemove", (e) => {
   pauseEvents(e);
 });
 
-slider.addEventListener("touchstart", () => {
+body.addEventListener("touchstart", (e) => {
   isActive = true;
   console.log("touchstart");
+  console.log(e.changedTouches);
 });
-slider.addEventListener("touchhend", () => {
+body.addEventListener("touchhend", (e) => {
   isActive = false;
   console.log("touchhend");
 });
-slider.addEventListener("touchcencel", () => {
+body.addEventListener("touchcencel", (e) => {
   isActive = false;
   console.log("touchcencel");
 });
-slider.addEventListener("touchmove", (e) => {
+body.addEventListener("touchmove", (e) => {
   if (!isActive) {
     return;
   }
@@ -67,6 +68,7 @@ slider.addEventListener("touchmove", (e) => {
   let i;
   for (let i = 0; e < e.changedTouches.length; i++) {
     x = e.changedTouches[i].pageX;
+    console.log(e.changedTouches);
   }
 
   x -= slider.getBoundingClientRect().left;
