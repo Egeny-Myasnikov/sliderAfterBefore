@@ -47,28 +47,25 @@ slider.addEventListener("mousemove", (e) => {
   pauseEvents(e);
 });
 
-body.addEventListener("touchstart", (e) => {
+slider.addEventListener("touchstart", (e) => {
   isActive = true;
-  console.log("touchstart");
-  console.log(e.changedTouches);
+  change.style.backgroundColor = "yellow";
 });
-body.addEventListener("touchhend", (e) => {
+slider.addEventListener("touchhend", (e) => {
   isActive = false;
-  console.log("touchhend");
+  change.style.backgroundColor = "crimson";
 });
-body.addEventListener("touchcencel", (e) => {
+slider.addEventListener("touchcencel", (e) => {
   isActive = false;
-  console.log("touchcencel");
+  change.style.backgroundColor = "crimson";
 });
-body.addEventListener("touchmove", (e) => {
+slider.addEventListener("touchmove", (e) => {
   if (!isActive) {
     return;
   }
   let x;
-  let i;
-  for (let i = 0; e < e.changedTouches.length; i++) {
+  for (let i = 0; i < e.changedTouches.length; i++) {
     x = e.changedTouches[i].pageX;
-    console.log(e.changedTouches);
   }
 
   x -= slider.getBoundingClientRect().left;
